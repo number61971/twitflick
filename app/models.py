@@ -14,6 +14,7 @@ class TwitterSearch(models.Model):
 
     search_term = models.TextField()
     response_json = models.TextField()
+    tweet_text = models.TextField()
 
 
 class FlickrSearch(models.Model):
@@ -22,6 +23,8 @@ class FlickrSearch(models.Model):
 
     search_term = models.TextField(blank=True, null=True)
     response_json = models.TextField(blank=True, null=True)
+    img_url = models.TextField(blank=True, null=True)
+    page_url = models.TextField(blank=True, null=True)
 
 
 class TwitflickSearch(models.Model):
@@ -91,7 +94,8 @@ class Tweet:
         """
         twitter_search = TwitterSearch(
                             search_term=self.data['query'],
-                            response_json=json.dumps(self.data)
+                            response_json=json.dumps(self.data),
+                            tweet_text=self.text,
                          )
         twitter_search.save()
         return twitter_search
@@ -127,7 +131,9 @@ class FlickrPhoto:
         """
         flickr_search = FlickrSearch(
                             search_term=self.search_term,
-                            response_json=json.dumps(self.data)
+                            response_json=json.dumps(self.data),
+                            img_url=self.get_img_src_url(),
+                            page_url=self.get_page_url()
                          )
         flickr_search.save()
         return flickr_search

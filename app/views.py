@@ -95,8 +95,10 @@ def twitflick_search(req):
         # represent NULLs. This does have the beneficial side effect of making
         # querying against NULL values a bit easier, however! See:
         # http://www.sqlite.org/nulls.html
-        #flickr_search = FlickrSearch(search_term=None, response_json=None)
-        flickr_search = FlickrSearch(search_term='NULL', response_json='NULL')
+        #flickr_search = FlickrSearch(search_term=None, response_json=None,
+        #                             img_url=None, page_url=None)
+        flickr_search = FlickrSearch(search_term='NULL', response_json='NULL',
+                                     img_url='NULL', page_url='NULL')
         flickr_search.save()
         flickr_search_term_display = (
             'No suitable search term from the tweet could be extracted.'
@@ -185,8 +187,10 @@ def search_flickr(term):
         # {u'photos': {u'total': u'0', u'photo': [], u'perpage': 1, u'page': 1, u'pages': 0}, u'stat': u'ok'}
         # there will be no photo data from which an ID may be extracted.
         flickr_photo = None
-        flickr_search = FlickrSearch(
-                                  search_term=term, response_json=response_json)
+        flickr_search = FlickrSearch(search_term=term,
+                            response_json=response_json,
+                            img_url='NULL', page_url='NULL'
+                            )
         flickr_search.save()
     return (flickr_photo, flickr_search)
 
