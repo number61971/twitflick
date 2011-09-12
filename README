@@ -80,7 +80,8 @@ performance without page reloads (per your design specs).
 I encountered frequent timeout errors when developing the site from home when
 querying flickr's API. (FWIW, flickr seems to produce erratic results from the
 same query string -- sometimes you'll get a photo and sometimes you won't! --
-but I don't know that there's anything we can do about that.) You will see a javascript alert noting the timeout should this happen to you if you click the 
+but I don't know that there's anything we can do about that.) You will see a 
+javascript alert noting the timeout should this happen to you if you click the 
 shiny blue "DO IT" button. If you reload/refresh the page and get a timeout, 
 you will instead be directed to the 500 error page because django considers 
 anything not a 404 to be an internal server error.
