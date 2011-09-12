@@ -1,0 +1,106 @@
+/*
+  twitter blue: #38ccf2
+  flickr blue: #0068bd
+  flickr red: #fe0084
+*/
+
+body {
+  /* background-color: #c0deed; */
+  font-family: Georgia,serif;
+  font-size: 16px;
+}
+
+#main_content {
+  width: 960px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 0 20px;
+}
+
+h1, h2, h3 {
+  font-family: Verdana,sans-serif;
+}
+
+#twitflick_logo {
+  margin-bottom: 0;
+}
+
+#tagline {
+  font-family: Verdana,sans-serif;
+  color: #fe0084;
+  margin-bottom: 40px;
+}
+
+#search_count {
+  font-family: Verdana,sans-serif;
+  font-weight: bold;
+  color: #fe0084;
+}
+
+#label_latest_tweet, #flickr_search_term_display {
+  font-style: italic;
+}
+
+#twitter_display {
+  margin-top: 20px;
+  border-top: 1px dotted #38ccf2;
+  padding-top: 5px;
+}
+
+#latest_tweet {
+  margin: 10px 0;
+  font-family: Verdana,sans-serif;
+  font-size: 20px;
+}
+
+#twitter_user_link {
+  text-decoration: none;
+  font-weight: bold;
+  color: #38ccf2;
+}
+
+#flickr_search_term_display {
+  margin-top: 20px;
+  border-top: 1px dotted #0068bd;
+  padding-top: 5px;
+}
+
+#flickr_search_term {
+  font-style: normal;
+  font-weight: bold;
+  font-family: Verdana,sans-serif;
+  color: #0068bd;
+}
+
+#flickr_display {
+  margin-top: 10px;
+}
+
+#ajax_spinner_wrapper {
+  height: 30px;
+  width: 400px;
+  position: fixed;
+  top:30%;
+  left:50%;
+  margin-left:-200px;
+  font-style: italic;
+  font-size: 20px;
+  border: 2px solid #fe0084;
+  background-color: white;
+  padding: 10px;
+}
+
+#ajax_spinner {
+  height: 30px;
+  width: 30px;
+  position: relative;
+  top: 13px;
+  left: 15px;
+}
+
+#ajax_spinner_text {
+  position: absolute;
+  left: 50px;
+  top: 14px;
+  display:inline;
+}

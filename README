@@ -1,0 +1,95 @@
+TwitFlick: The website that uses Twitter and Flickr to do nothing useful.
+
+Brought to you by:
+Damon Butler
+iamdamocles@gmail.com
+608-228-0867
+
+
+
+=== INSTALLATION REQUIREMENTS ===
+
+* python 2.6 or 2.7
+* django 1.3: https://www.djangoproject.com/download/
+* sqlite3: http://sqlite.org/download.html
+
+
+
+=== RUNNING THE WEBSITE ===
+
+In the terminal of your choice, change into the twitflick project directory
+(you should be there right now if you're reading this!) so that it is your
+current working directory. Then run the following command:
+
+  $ python manage.py runserver [port]
+
+If you don't specify a port number, django will default to running the website
+on port 8000.
+
+Point your browser to the following URL:
+
+  http://localhost:8000/
+
+Unless you specified a port in the launch command, in which case the URL is:
+
+  http://localhost:[port]/
+
+Type CTRL-C to kill the server process.
+
+
+IMPORTANT: Because I am using sqlite for the database, you cannot allow more
+than one client to access the same website instance! Concurrent access to a
+sqlite database results in undefined and unpredictable behavior.
+
+I have supplied a virginal clean database file if, at any time, you'd like to
+start the site up from scratch. It is called, rather obviously,
+"twitflick_virgin_db.sqlite". Simply copy it to the same name as the existing
+"live" database file ("twitflick.sqlite") and restart the server and you're
+good to go.
+
+
+
+=== RUNNING THE WEBSITE TEST SUITE ===
+
+Unit and behavioral tests for the site are defined in twitflick/app/tests.py.
+
+To run the test suite, change into the twitflick project directory so that it is
+your current working directory. Then run the following command:
+
+  $ python manage.py test app
+
+If you leave off the "app" you will also end up running all of django's unit
+tests as well. While there are well over 300 of them, this won't delay you too
+long; there's just no reason to bother with it.
+
+
+
+=== NOTES ===
+
+I created the website in python/django because I didn't trust that I could
+learn enough about Ruby to create a functional site in that language in the 
+time allotted. I expect, however, that you won't have much trouble understanding
+the python code.
+
+Per web accessibility standards, I designed the site to function properly
+without any javascript (or CSS). With javascript turned off, clicking "DO THAT" 
+results in a form submission that reloads the page. The site's javascript is 
+primarily there just to override this default behavior and provide smooth AJAX 
+performance without page reloads (per your design specs).
+
+I encountered frequent timeout errors when developing the site from home when
+querying flickr's API. (FWIW, flickr seems to produce erratic results from the
+same query string -- sometimes you'll get a photo and sometimes you won't! --
+but I don't know that there's anything we can do about that.) You will see a javascript alert noting the timeout should this happen to you if you click the 
+shiny blue "DO IT" button. If you reload/refresh the page and get a timeout, 
+you will instead be directed to the 500 error page because django considers 
+anything not a 404 to be an internal server error.
+
+If you would like to see the site's raw errors -- hopefully a rare occurrance --
+you can edit the settings.py file located at the top level of the twitflick 
+project directory. Simply change the DEBUG global variable to be "True" (no 
+quotes) instead of "False" (no quotes). With javascript enabled, however,
+clicking on "DO IT" will still show you the brief error message in an alert. If 
+you reload the page, however, django will produce a very nice and interactive 
+error page with the full exact traceback and request details.
+

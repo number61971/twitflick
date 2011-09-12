@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:svg="http://www.w3.org/2000/svg" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <link rel="stylesheet" type="text/css" href="/static/css/ui-start/jquery-ui.custom.css"/>
+  <link rel="stylesheet" type="text/css" href="/static/css/twitflick.css"/>
+  <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="/static/js/spin.js"></script>
+  <script type="text/javascript" src="/static/js/twitflick.js"></script>
+  <title>twitflick (R)(TM)</title>
+</head>
+<body>
+  <div id="main_content">
+    <h1 id="twitflick_logo"><a href="/"><img src="/static/img/twitflick.png" alt="twitflick"/></a></h1>
+    <div id="tagline">Because if you&rsquo;re gonna do something useless, you may as well do it twice.</div>
+    <div id="form_twitflick_search_container">
+      <form id="form_twitflick_search" action="/app/twitflick_search_post" method="post">
+        {% csrf_token %}
+        <p>Truth to be told, you&rsquo;ve done this no fewer than
+          <span id="search_count">{{ search_count }}</span> time<span id="search_count_plural">{{ search_count_plural }}</span>.
+        </p>
+        <p>Yet if you haven&rsquo;t had enough:
+            <input type="submit" id="button_twitflick_search" value="DO THAT TO ME ONE MORE TIME!" class="ui-button ui-corner-all ui-state-default"/>
+        </p>
+      </form>
+    </div>
+    <div id="twitter_display">
+      <div id="label_latest_tweet">Latest &ldquo;<span id="twitter_search_term">{{ twitter_search_term }}</span>&rdquo; tweet:</div>
+      <div id="latest_tweet">
+        <a id="twitter_user_link" href="{{ twitter_user_url }}"><img id="twitter_user_profile_image" src="{{ twitter_user_profile_image_url }}"/>
+        @<span id="twitter_user">{{ twitter_user }}</span></a>:
+        <span id="tweet">{{ tweet }}</span>
+      </div>
+    </div>
+    <div id="flickr_search_term_display">{% autoescape off %}{{ flickr_search_term_display }}{% endautoescape %}</div>
+    <div id="flickr_display">{% autoescape off %}{{ flickr_display }}{% endautoescape %}</div>
+    <div id="ajax_spinner_wrapper" style="display:none">
+      <div id="ajax_spinner"></div>
+      <div id="ajax_spinner_text">Draining data from the Intertubes&hellip;</div>
+    </div>
+  </div>
+</body>
+</html>
